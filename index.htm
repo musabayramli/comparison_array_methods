@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="az">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>JavaScript Taskları</title>
+  </head>
+  <body>
+    <h1>Eyni Məsələ Fərqli Metodlarla</h1>
+    <div id="array-display" class="array-display"></div>
+    <table>
+      <thead>
+        <tr>
+          <th>Metod</th>
+          <th>Kod</th>
+          <th>Nəticə</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td data-label="Metod">forEach</td>
+          <td data-label="Kod">
+            <button onclick="toggleCode(1)">Kodu Göstər</button>
+            <div id="code1" class="code-block">
+              <pre><code>
+let newArr = [];
+arr.forEach(item => {
+  if (typeof item === 'number') {
+    newArr.push(item * 2);
+  }
+});
+          </code></pre>
+            </div>
+          </td>
+          <td data-label="Nəticə">
+            <div id="result1" class="result-block"></div>
+          </td>
+        </tr>
+
+        <tr>
+          <td data-label="Metod">map</td>
+          <td data-label="Kod">
+            <button onclick="toggleCode(2)">Kodu Göstər</button>
+            <div id="code2" class="code-block">
+              <pre><code>
+let newArr = arr.map(item => typeof item === 'number' ? item * 2 : item);
+
+              </code></pre>
+            </div>
+          </td>
+          <td data-label="Nəticə">
+            <div id="result2" class="result-block"></div>
+          </td>
+        </tr>
+
+        <tr>
+          <td data-label="Metod">reduce</td>
+          <td data-label="Kod">
+            <button onclick="toggleCode(3)">Kodu Göstər</button>
+            <div id="code3" class="code-block">
+              <pre><code>
+let newArr = arr.reduce((acc, item) => {
+  if (typeof item === 'number') {
+    acc.push(item * 2);
+  }
+  return acc;
+}, []);
+
+              </code></pre>
+            </div>
+          </td>
+          <td data-label="Nəticə">
+            <div id="result3" class="result-block"></div>
+          </td>
+        </tr>
+
+        <tr>
+          <td data-label="Metod">filter</td>
+          <td data-label="Kod">
+            <button onclick="toggleCode(4)">Kodu Göstər</button>
+            <div id="code4" class="code-block">
+              <pre><code>
+let newArr = arr.filter(item => typeof item === 'number').map(item => item * 2);
+
+              </code></pre>
+            </div>
+          </td>
+          <td data-label="Nəticə">
+            <div id="result4" class="result-block"></div>
+          </td>
+        </tr>
+
+        <tr>
+          <td data-label="Metod">find</td>
+          <td data-label="Kod">
+            <button onclick="toggleCode(5)">Kodu Göstər</button>
+            <div id="code5" class="code-block">
+              <pre><code>
+let foundNumber = arr.find(item => typeof item === 'number');
+let result = foundNumber ? [foundNumber * 2] : [];
+
+              </code></pre>
+            </div>
+          </td>
+          <td data-label="Nəticə">
+            <div id="result5" class="result-block"></div>
+          </td>
+        </tr>
+
+        <tr>
+          <td data-label="Metod">some</td>
+          <td data-label="Kod">
+            <button onclick="toggleCode(6)">Kodu Göstər</button>
+            <div id="code6" class="code-block">
+              <pre><code>
+let hasNumber = arr.some(item => typeof item === 'number');
+let result = hasNumber ? arr.map(item => (typeof item === 'number' ? item * 2 : item)) : [];
+
+              </code></pre>
+            </div>
+          </td>
+          <td data-label="Nəticə">
+            <div id="result6" class="result-block"></div>
+          </td>
+        </tr>
+
+        <tr>
+          <td data-label="Metod">every</td>
+          <td data-label="Kod">
+            <button onclick="toggleCode(7)">Kodu Göstər</button>
+            <div id="code7" class="code-block">
+              <pre><code>let allNumbers = arr.every(item => typeof item === 'number');
+                let everyResult = allNumbers ? arr.map(item => item * 2) : "Arraydə bütün elementlər rəqəm deyil.";
+                document.getElementById("result7").textContent = Array.isArray(everyResult) ? everyResult.join(", ") : everyResult;
+                
+              </code></pre>
+            </div>
+          </td>
+          <td data-label="Nəticə">
+            <div id="result7" class="result-block"></div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <script src="app.js"></script>
+  </body>
+</html>
